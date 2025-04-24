@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-public class App {
+public class HOGWARTS {
 public static String ChoosingTeam(int key){
     if(key == 1){
         return ("You Chose Team GRYFFINDOR!");
