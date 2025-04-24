@@ -11,14 +11,6 @@ public static String ChoosingTeam(int key){
     }    
 }
 
-public static String ChoosingPlayer(int key){
- static ArrayList<string> GRYFFINDOR = new ArrayList<>();
- static ArrayList<string> SLYTHERIN = new ArrayList<>();
-}
-
-
-
-
 
 public static void main(String[] args){
 ///Printing the name of the game
