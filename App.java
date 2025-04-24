@@ -8,8 +8,11 @@ public static String ChoosingTeam(int key){
         return("You Chose Team SLYTHERIN!");
     }else{
         return ("Invalid Choice! PREASE PRESS ~~~ 1 OR 2 ~~~");
-    }    
+    } 
+       
 }
+
+
 
 
 public static void main(String[] args){
