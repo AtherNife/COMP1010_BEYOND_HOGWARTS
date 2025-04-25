@@ -1,6 +1,7 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.Scanner;    /// to read user keyboard input
+import java.util.ArrayList;  /// to create arraylists
+import java.util.Random;     /// to use random functions in the program
+
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
     static ArrayList<String> SLYTHERIN = new ArrayList<>();   /// ArrayList for Slytherin
