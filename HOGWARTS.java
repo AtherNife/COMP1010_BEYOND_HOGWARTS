@@ -18,7 +18,6 @@ public static String ChoosingTeam(int key){
 public static void main(String[] args){
 ///Printing the name of the game
  System.out.println("~~~~~~ WELCOME TO BEYOND HOGWARTS ~~~~~~~~\n");
-    System.out.println("testing");
  /// object for choosing the team
  Scanner scanner = new Scanner(System.in);
  System.out.println("TO PLAY THE GAME PLEASE CHOOSE A TEAM FROM BELOW\n" + "1. TEAM GRYFFINDOR\n" + "2. TEAM SLYTHERIN" );
