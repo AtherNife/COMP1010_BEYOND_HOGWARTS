@@ -6,17 +6,17 @@ public class HOGWARTS {
     static Scanner scanner = new Scanner(System.in);
 
 public static void TeamMember(){
-    GRYFFINDOR.add(" HARRY POTTER"); 
+    GRYFFINDOR.add("HARRY POTTER"); 
     GRYFFINDOR.add("ALBUS DUMBLEDORE");
     SLYTHERIN.add("DRACO MALFOY"); 
     SLYTHERIN.add("SEVERUS SNAPE");
 }
 
 public static void ChoosingTeam(){
-    System.out.println("TO PLAY THE GAME PLEASE CHOOSE A TEAM FROM BELOW\n" + "1. TEAM GRYFFINDOR\n" + "2. TEAM SLYTHERIN" );
+    System.out.println("TO PLAY THE GAME PLEASE CHOOSE A TEAM FROM BELOW:\n" + "1. TEAM GRYFFINDOR\n" + "2. TEAM SLYTHERIN" );
     int teamChoice = scanner.nextInt();
     if(teamChoice == 1){
-        System.out.println("You Chose Team GRYFFINDOR!\n Now Please Select a Player:");
+        System.out.println("You Chose Team GRYFFINDOR!\n Now Please Select a Player to Continue:");
         for(int i=0; i<GRYFFINDOR.size(); i++){
             System.out.println((i + 1) + " . " + GRYFFINDOR.get(i));
         }
@@ -27,7 +27,7 @@ public static void ChoosingTeam(){
             System.out.println("Invalid Player Selection. Can't Proceed!");
           }
     }else if(teamChoice == 2){
-        System.out.println("You Chose Team SLYTHERIN!\n Now Please Select a Player:1");
+        System.out.println("You Chose Team SLYTHERIN!\nNow Please Select a Player:");
         for(int i=0; i<SLYTHERIN.size(); i++){
             System.out.println((i + 1) + " . " + SLYTHERIN.get(i));
         }
