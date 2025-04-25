@@ -1,9 +1,9 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 public class HOGWARTS {
-    static ArrayList<String> GRYFFINDOR = new ArrayList<>();
-    static ArrayList<String> SLYTHERIN = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
+    static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
+    static ArrayList<String> SLYTHERIN = new ArrayList<>();   /// ArrayList for Slytherin
+    static Scanner scanner = new Scanner(System.in);    /// Java class to take user input         
 
 public static void TeamMember(){
     GRYFFINDOR.add("HARRY POTTER"); 
@@ -43,10 +43,19 @@ public static void ChoosingTeam(){
        
 }
 
+public static void UserName(){
+    System.out.println("Enter your name: ");
+    String name = scanner.nextLine();
+    System.out.println("Hello " + name + "!");
+} 
+
 
 public static void main(String[] args){
 ///Printing the name of the game
  System.out.println("~~~~~~ WELCOME TO BEYOND HOGWARTS ~~~~~~~~\n");
+
+ /// all the methods listing 
+ UserName();
  TeamMember();
  ChoosingTeam();
  scanner.close();
