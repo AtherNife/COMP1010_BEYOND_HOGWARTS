@@ -1,6 +1,42 @@
 import java.util.Scanner;    /// to read user keyboard input
 import java.util.ArrayList;  /// to create arraylists
-import java.util.Random;     /// to use random functions in the program
+import java.util.Random; /// to use random functions in the program
+
+///Here, I'm making the Attack class for the characters. -Ady
+class Attack {
+    String name;
+    int damage;
+    boolean skipOpponentTurn;
+    boolean reduceNextDamage;
+    double damageReductionFactor;
+///I'm, defining this simple class to represent a spell or an attack. -Ady, "Double will work for the damage reduction factor"-Ady
+    public Attack( String name, int damage, boolean skipOpponentTurn, boolean reduceNextDamage, double damageReductionFactor){
+        this.name= name;
+        this.damage=damage;
+        this.skipOpponentTurn=skipOpponentTurn;
+        this.reduceNextDamage=reduceNextDamage;
+        this.damageReductionFactor=damageReductionFactor;
+    }
+
+}/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
+ class Player{
+    String name;
+    int hp;
+    ArrayList<Attack> attacks; ///used classical arrayList here, instead of the preffered Util.list, as it's more in line with what we are learning.-Ady
+
+    public Player(String name, int hp, ArrayList<Attack> attacks) {
+        this.name= name;
+        this.hp = hp;
+        this.attacks = attacks;
+    }
+    public void displayAttacks() {///setting the condition for the attacks to work. going to need to call this with the player functions later on.- Ady (REMINDER TO CALL FUNCTION!)
+        for(int i=0;i<attacks.size(); i++) {
+            System.out.println((i+1) + ". " + attacks.get(i).name + "(damage: " + attacks.get(i).damage + ")");
+        }
+    }
+ }
+
+
 
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
@@ -29,6 +65,21 @@ public static void ChoosingTeam(){
         int enemySlytherin = random1.nextInt(SLYTHERIN.size());
         String enemyPlayer1 = SLYTHERIN.get(enemySlytherin);
         System.out.println("Enemy Selected: " + enemyPlayer1);
+
+        System.out.println("\n------- RAISE YOUR WANDS FOR NOW, THE GRAND HOGWARTS CHAMPIONSHIP BEGINS! Goodluck Gryffindor! -------");
+try {
+    Thread.sleep(3000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt(); //I wanted to add a time delay of 3 seconds between the sentences for it to feel more realist.-Ady
+}
+//this is where the timing delay takes place, feels more like an actual rpg now because the lines take time to process instead of being blurted out at once. 
+System.out.println("This is a 3-round tournament. The one who wins at least 2 rounds will be crowned the champion!\n");
+try {
+    Thread.sleep(3000);
+
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
         }else{
             System.out.println("Invalid Player Selection. Can't Proceed!");
           }
@@ -44,7 +95,7 @@ public static void ChoosingTeam(){
             int enemyGryffindor = random2.nextInt(GRYFFINDOR.size());
             String enemyPlayer2 = GRYFFINDOR.get(enemyGryffindor); 
             System.out.println("Enemy Selected: " + enemyPlayer2); 
-             System.out.println("\n~~~~~ THE GRAND HOGWARTS CHAMPIONSHIP BEGINS! ~~~~~");
+             System.out.println("\n------- RAISE YOUR WANDS FOR NOW, THE GRAND HOGWARTS CHAMPIONSHIP BEGINS! Goodluck Slytherin! -------");
 try {
     Thread.sleep(3000);
 } catch (InterruptedException e) {
@@ -54,16 +105,18 @@ try {
 System.out.println("This is a 3-round tournament. The one who wins at least 2 rounds will be crowned the champion!\n");
 try {
     Thread.sleep(3000);
+
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
-          }else{
+
+}else{
             System.out.println("Invalid Player Selection. Can't Proceed!");
           }
     }else{
         System.out.println("Invalid Choice! PREASE PRESS ~~~ 1 OR 2 ~~~");
     } 
-       
+  
 }
 
 public static void UserName(){                    ///Method for user name
