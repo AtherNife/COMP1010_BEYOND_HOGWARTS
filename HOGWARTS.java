@@ -50,7 +50,7 @@ try {
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt(); //I wanted to add a time delay of 3 seconds between the sentences for it to feel more realist.-Ady
 }
-
+//this is where the timing delay takes place, feels more like an actual rpg now because the lines take time to process instead of being blurted out at once. 
 System.out.println("This is a 3-round tournament. The one who wins at least 2 rounds will be crowned the champion!\n");
 try {
     Thread.sleep(3000);
