@@ -43,7 +43,20 @@ public static void ChoosingTeam(){
             Random random2 = new Random();
             int enemyGryffindor = random2.nextInt(GRYFFINDOR.size());
             String enemyPlayer2 = GRYFFINDOR.get(enemyGryffindor); 
-            System.out.println("Enemy Selected: " + enemyPlayer2);  
+            System.out.println("Enemy Selected: " + enemyPlayer2); 
+             System.out.println("\n~~~~~ THE GRAND HOGWARTS CHAMPIONSHIP BEGINS! ~~~~~");
+try {
+    Thread.sleep(3000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt(); //I wanted to add a time delay of 3 seconds between the sentences for it to feel more realist.-Ady
+}
+
+System.out.println("This is a 3-round tournament. The one who wins at least 2 rounds will be crowned the champion!\n");
+try {
+    Thread.sleep(3000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+}
           }else{
             System.out.println("Invalid Player Selection. Can't Proceed!");
           }
