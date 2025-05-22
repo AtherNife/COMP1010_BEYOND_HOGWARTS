@@ -25,6 +25,11 @@ class Attack {
     private int defense;
     private int initiative;
 
+    public CharacterStats(int strength, int intelligence, int defense, int initiative) {
+        this.strength = strength;
+        this.intelligence = intelligence;
+        this.defense = defense;
+        this.initiative = initiative;
 }/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
  class Player{
     String name;
