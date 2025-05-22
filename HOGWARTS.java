@@ -20,8 +20,6 @@ class Attack {
 }
 
 
-
-
 // This class is the stats of all the players, we will use this as a measurement for player factors. 
  class CharacterStats {
     private int strength;
@@ -60,8 +58,6 @@ class Attack {
 }
 
  
-
-
 //status effect class here. 
   class StatusEffect {
     private String name;
@@ -155,9 +151,34 @@ class Attack {
  
 }
     
+//wands, we're going to have 3 wands to choose from 
+ class Wand {
+    private String name;
+    private String wood;
+    private String core;
+    private double length; 
+    private String effectDescription;
 
+    public Wand(String name, String wood, String core, double length, String effectDescription) {
+        this.name = name;
+        this.wood = wood;
+        this.core = core;
+        this.length = length;
+        this.effectDescription = effectDescription;
+    }
 
+    // Getters
+    public String getName() { return name; }
+    public String getWood() { return wood; }
+    public String getCore() { return core; }
+    public double getLength() { return length; }
+    public String getEffectDescription() { return effectDescription; }
 
+    @Override  // again overide to ensure that the output will hold one of the values. 
+    public String toString() {
+        return name + " (Wood: " + wood + ", Core: " + core + ", Length: " + length + " inches) – " + effectDescription;
+    }
+}
 
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
