@@ -24,12 +24,34 @@ class Attack {
     private int intelligence;
     private int defense;
     private int initiative;
+    
 
     public CharacterStats(int strength, int intelligence, int defense, int initiative) {
         this.strength = strength;
         this.intelligence = intelligence;
         this.defense = defense;
         this.initiative = initiative;
+    }
+
+    // These are the getters factors for the character stats class
+    public int getStrength() { return strength; }
+    public int getIntelligence() { return intelligence; }
+    public int getDefense() { return defense; }
+    public int getInitiative() { return initiative; }
+
+    // This is the setters factors for the character stats class. 
+    public void setStrength(int strength) { this.strength = strength; }
+    public void setIntelligence(int intelligence) { this.intelligence = intelligence; }
+    public void setDefense(int defense) { this.defense = defense; }
+    public void setInitiative(int initiative) { this.initiative = initiative; }
+
+    @Override // this is so that the compilers will be forced to allocate an error message if even one of the conditions do not hold for the code. 
+    public String toString() {
+        return "Strength: " + strength + ", Intelligence: " + intelligence +
+               ", Defense: " + defense + ", Initiative: " + initiative;
+    }
+}
+
 }/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
  class Player{
     String name;
