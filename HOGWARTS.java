@@ -179,6 +179,17 @@ class Attack {
         return name + " (Wood: " + wood + ", Core: " + core + ", Length: " + length + " inches) – " + effectDescription;
     }
 }
+// game save class. 
+ class GameSaveData {
+    public String playerName;
+    public int playerHP;
+
+    public GameSaveData(String playerName, int playerHP) {
+        this.playerName = playerName;// called later.
+        this.playerHP = playerHP; //this can be called later.
+    }
+}
+
 
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
