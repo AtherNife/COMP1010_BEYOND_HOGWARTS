@@ -52,7 +52,8 @@ class Attack {
     }
 }
 
-}/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
+}
+/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
  class Player{
     String name;
     int hp;
@@ -70,7 +71,27 @@ class Attack {
     }
  }
 
+ public class StatusEffect {
+    private String name;
+    private int duration; // in turns
+    private int potency; // e.g., damage per turn or stat modifier
+    private EffectType type;
+    private List<StatusEffect> childEffects;
 
+     public enum EffectType {
+        DAMAGE_OVER_TIME,
+        STAT_MODIFIER,
+        SKIP_TURN, //these are just some of the effects that we need, possible to add more and then create seperate calls for them later. 
+        
+    }
+
+    public StatusEffect(String name, int duration, int potency, EffectType type) {
+        this.name = name;
+        this.duration = duration;
+        this.potency = potency;
+        this.type = type;
+        this.childEffects = new ArrayList<>();
+    }
 
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
