@@ -17,23 +17,25 @@ class Attack {
         this.reduceNextDamage=reduceNextDamage;
         this.damageReductionFactor=damageReductionFactor;
     }
+}
+
+
+
 
 // This class is the stats of all the players, we will use this as a measurement for player factors. 
-    public class CharacterStats {
+ class CharacterStats {
     private int strength;
     private int intelligence;
     private int defense;
     private int initiative;
     
-
     public CharacterStats(int strength, int intelligence, int defense, int initiative) {
         this.strength = strength;
         this.intelligence = intelligence;
         this.defense = defense;
         this.initiative = initiative;
     }
-
-    // These are the getters factors for the character stats class
+// These are the getters factors for the character stats class
     public int getStrength() { return strength; }
     public int getIntelligence() { return intelligence; }
     public int getDefense() { return defense; }
@@ -50,39 +52,27 @@ class Attack {
         return "Strength: " + strength + ", Intelligence: " + intelligence +
                ", Defense: " + defense + ", Initiative: " + initiative;
     }
+
+    public void modifyStat(String string, int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'modifyStat'");
+    }
 }
 
-}
-/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
- class Player{
-    String name;
-    int hp;
-    ArrayList<Attack> attacks; ///used classical arrayList here, instead of the preffered Util.list, as it's more in line with what we are learning.-Ady
+ 
 
-    public Player(String name, int hp, ArrayList<Attack> attacks) {
-        this.name= name;
-        this.hp = hp;
-        this.attacks = attacks;
-    }
-    public void displayAttacks() {///setting the condition for the attacks to work. going to need to call this with the player functions later on.- Ady (REMINDER TO CALL FUNCTION!)
-        for(int i=0;i<attacks.size(); i++) {
-            System.out.println((i+1) + ". " + attacks.get(i).name + "(damage: " + attacks.get(i).damage + ")");
-        }
-    }
- }
 
- public class StatusEffect {
+//status effect class here. 
+  class StatusEffect {
     private String name;
     private int duration; // in turns
     private int potency; // e.g., damage per turn or stat modifier
     private EffectType type;
-    private List<StatusEffect> childEffects;
 
-     public enum EffectType {
+    public enum EffectType {
         DAMAGE_OVER_TIME,
         STAT_MODIFIER,
-        SKIP_TURN, //these are just some of the effects that we need, possible to add more and then create seperate calls for them later. 
-        
+        SKIP_TURN
     }
 
     public StatusEffect(String name, int duration, int potency, EffectType type) {
@@ -90,8 +80,84 @@ class Attack {
         this.duration = duration;
         this.potency = potency;
         this.type = type;
-        this.childEffects = new ArrayList<>();
     }
+
+    public void applyEffect(Player player) {
+        switch (type) {
+            case DAMAGE_OVER_TIME:
+                player.reduceHp(potency);
+                break;
+            case STAT_MODIFIER:
+                player.getStats().modifyStat("defense", -potency);
+                break;
+            case SKIP_TURN:
+                player.setSkipNextTurn(true);
+                break;
+        }
+    }
+
+    public void onTurnStart(Player player) {
+        if (duration > 0) {
+            applyEffect(player);
+            duration--;
+        }
+    }
+
+    // Getters
+    public String getName() { return name; }
+    public int getDuration() { return duration; }
+    public int getPotency() { return potency; }
+    public EffectType getType() { return type; }
+}
+// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
+  class Player {
+    private String name;
+    private int hp;
+    private CharacterStats stats;
+    private ArrayList<Attack> attacks;
+    private boolean skipNextTurn;
+
+    public Player(String name, int hp, CharacterStats stats, ArrayList<Attack> attacks) {
+        this.name = name;
+        this.hp = hp;
+        this.stats = stats;
+        this.attacks = attacks;
+        this.skipNextTurn = false;
+    }
+
+    public void addStatusEffect(StatusEffect effect) {
+        // Apply the effect immediately
+        effect.applyEffect(this);
+    }
+
+    public void onTurnStart() {
+        // Reset skipNextTurn at the start of each turn
+        skipNextTurn = false;
+    }
+
+    public void reduceHp(int amount) {
+        hp -= amount;
+        if (hp < 0) hp = 0;
+    }
+
+    public CharacterStats getStats() {
+        return stats;
+    }
+
+    public void setSkipNextTurn(boolean skip) {
+        this.skipNextTurn = skip;
+    }
+
+    public boolean shouldSkipTurn() {
+        return skipNextTurn;
+    }
+
+ 
+}
+    
+
+
+
 
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
