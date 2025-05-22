@@ -106,49 +106,39 @@ class Attack {
     public EffectType getType() { return type; }
 }
 // creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
-  class Player {
+   class Player {
     private String name;
-    private int hp;
-    private CharacterStats stats;
-    private ArrayList<Attack> attacks;
-    private boolean skipNextTurn;
+    private int health;
+    private int attackPower;
 
-    public Player(String name, int hp, CharacterStats stats, ArrayList<Attack> attacks) {
+    public Player(String name, int health, int attackPower) {
         this.name = name;
-        this.hp = hp;
-        this.stats = stats;
-        this.attacks = attacks;
-        this.skipNextTurn = false;
+        this.health = health;
+        this.attackPower = attackPower;
     }
 
-    public void addStatusEffect(StatusEffect effect) {
-        // Apply the effect immediately
-        effect.applyEffect(this);
+    public String getName() {
+        return name;
     }
 
-    public void onTurnStart() {
-        // Reset skipNextTurn at the start of each turn
-        skipNextTurn = false;
+    public int getHealth() {
+        return health;
     }
 
-    public void reduceHp(int amount) {
-        hp -= amount;
-        if (hp < 0) hp = 0;
+    public int attack() {
+        return attackPower;
     }
 
-    public CharacterStats getStats() {
-        return stats;
+    public void takeDamage(int damage) {
+        health -= damage;
+        if (health < 0) {
+            health = 0;
+        }
     }
 
-    public void setSkipNextTurn(boolean skip) {
-        this.skipNextTurn = skip;
+    public boolean isAlive() {
+        return health > 0;
     }
-
-    public boolean shouldSkipTurn() {
-        return skipNextTurn;
-    }
-
- 
 }
     
 //wands, we're going to have 3 wands to choose from 
@@ -207,7 +197,42 @@ class SkillNode {
         }
     }
 }
+ 
 
+// battle manager class, which needed some changes in player class to function properly. 
+class BattleManager {
+    private Player player1;
+    private Player player2;
+
+    public BattleManager(Player p1, Player p2) {
+        this.player1 = p1;
+        this.player2 = p2;
+    }
+
+    public void startBattle() {
+        System.out.println("Battle Start: " + player1.getName() + " vs " + player2.getName());
+        Player attacker = player1;
+        Player defender = player2;
+
+        while (player1.isAlive() && player2.isAlive()) {
+            int damage = attacker.attack();
+            defender.takeDamage(damage);
+            System.out.println(attacker.getName() + " attacks " + defender.getName() + " for " + damage + " damage.");
+            System.out.println(defender.getName() + " has " + defender.getHealth() + " HP remaining.\n");
+
+            // Swap roles
+            Player temp = attacker;
+            attacker = defender;
+            defender = temp;
+        }
+
+        if (player1.isAlive()) {
+            System.out.println(player1.getName() + " wins the battle!");
+        } else {
+            System.out.println(player2.getName() + " wins the battle!");
+        }
+    }
+}
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
     static ArrayList<String> SLYTHERIN = new ArrayList<>();   /// ArrayList for Slytherin
