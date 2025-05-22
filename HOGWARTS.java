@@ -190,6 +190,23 @@ class Attack {
     }
 }
 
+//the skillNode class, this is also where recursive data structures take place. 
+class SkillNode {
+    String skillName;
+    SkillNode[] prerequisites;
+
+    public SkillNode(String skillName, SkillNode[] prerequisites) {
+        this.skillName = skillName;
+        this.prerequisites = prerequisites;
+    }
+//recursive data type. 
+    public void displaySkillTree(int level) {  
+        System.out.println("  ".repeat(level) + skillName);
+        for (SkillNode prerequisite : prerequisites) {
+            prerequisite.displaySkillTree(level + 1);
+        }
+    }
+}
 
 public class HOGWARTS {
     static ArrayList<String> GRYFFINDOR = new ArrayList<>();  /// ArrayList for Gryffindore
