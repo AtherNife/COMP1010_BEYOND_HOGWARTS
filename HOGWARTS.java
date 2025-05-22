@@ -18,6 +18,13 @@ class Attack {
         this.damageReductionFactor=damageReductionFactor;
     }
 
+// This class is the stats of all the players, we will use this as a measurement for player factors. 
+    public class CharacterStats {
+    private int strength;
+    private int intelligence;
+    private int defense;
+    private int initiative;
+
 }/// creating a player class here, might do this differently later in a more appropriate way in regards to assignment specs. -Ady
  class Player{
     String name;
